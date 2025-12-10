@@ -1,0 +1,29 @@
+### GET ROOT
+### /
+get http://localhost:8080/ HTTP/1.1
+content-type: application/json
+
+### GET ALL COMPANIES
+### /companies
+get http://localhost:8080/v1/companies HTTP/1.1
+content-type: application/json
+
+### CREATE A NEW COMPANY
+### /company
+post http://localhost:8080/v1/company HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Apple",
+    "address": "USA",
+    "email": "apple@example.com"
+}
+
+### UPDATE A COMPANY STATUS
+### /company/{id}/status
+patch http://localhost:8080/v1/company/ba87d4f9-9c88-418e-af0f-afa482fc2e57/status HTTP/1.1
+Content-Type: application/json
+
+{
+    "status": "active"
+}
