@@ -2,6 +2,8 @@
 
 namespace OptimaCultura\Company\Domain;
 
+use OptimaCultura\Company\Domain\ValueObject\CompanyAddress;
+use OptimaCultura\Company\Domain\ValueObject\CompanyEmail;
 use OptimaCultura\Company\Domain\ValueObject\CompanyId;
 use OptimaCultura\Company\Domain\ValueObject\CompanyName;
 use OptimaCultura\Company\Domain\ValueObject\CompanyStatus;
@@ -20,6 +22,16 @@ final class Company implements Arrayable
     private CompanyName $name;
 
     /**
+     * @var \OptimaCultura\Company\Domain\ValueObject\CompanyEmail
+     */
+    private CompanyEmail $email;
+
+    /**
+     * @var \OptimaCultura\Company\Domain\ValueObject\CompanyAddress
+     */
+    private CompanyAddress $address;
+
+    /**
      * @var \OptimaCultura\Company\Domain\ValueObject\CompanyStatus
      */
     private CompanyStatus $status;
@@ -27,10 +39,14 @@ final class Company implements Arrayable
     public function __construct(
         CompanyId $id,
         CompanyName $name,
+        CompanyEmail $email,
+        CompanyAddress $address,
         CompanyStatus $status
     ) {
         $this->id = $id;
         $this->name = $name;
+        $this->email = $email;
+        $this->address = $address;
         $this->status = $status;
     }
 
@@ -51,6 +67,22 @@ final class Company implements Arrayable
     }
 
     /**
+     * Get the company email
+     */
+    public function email(): CompanyEmail
+    {
+        return $this->email;
+    }
+
+    /**
+     * Get the company address
+     */
+    public function address(): CompanyAddress
+    {
+        return $this->address;
+    }
+
+    /**
      * Get the company status
      */
     public function status(): CompanyStatus
@@ -64,9 +96,11 @@ final class Company implements Arrayable
     public function toArray()
     {
         return [
-            'id'       => $this->id()->get(),
-            'name'     => $this->name()->get(),
-            'status'   => $this->status()->name(),
+            'id' => $this->id()->get(),
+            'name' => $this->name()->get(),
+            'email' => $this->email()->get(),
+            'address' => $this->address()->get(),
+            'status' => $this->status()->name(),
         ];
     }
 }

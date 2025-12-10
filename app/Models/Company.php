@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
@@ -11,6 +11,10 @@ class Company extends Model
 
     public $incrementing = false;
     protected $keyType = 'string';
+
+    protected $casts = [
+        'status' => 'integer',
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -20,5 +24,8 @@ class Company extends Model
     protected $fillable = [
         'id',
         'name',
+        'email',
+        'address',
+        'status',
     ];
 }
