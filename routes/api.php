@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/companies', [App\Http\Controllers\Api\Company\GetCompanyListController::class, '__invoke']);
 Route::post('/company', [App\Http\Controllers\Api\Company\PostCreateCompanyController::class, '__invoke']);
 Route::patch('/company/{id}/status', [App\Http\Controllers\Api\Company\PatchCompanyStatusController::class, '__invoke']);
